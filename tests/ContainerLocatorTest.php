@@ -34,7 +34,8 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
         ];
 
         $mapping = [
-            'Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand'  => 'Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler',
+            'Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand' =>
+                'Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler',
         ];
 
         $this->containerLocator = new ContainerLocator(
