@@ -96,12 +96,6 @@ class ContainerLocator implements HandlerLocator
 
         $serviceId = $this->commandToHandlerIdMap[$className];
 
-        try {
-            return $this->container->get($serviceId);
-
-        } catch (ReflectionException $e) {
-            throw MissingContainerServiceException::forCommand($command);
-        }
-
+        return $this->container->get($serviceId);
     }
 }

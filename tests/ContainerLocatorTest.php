@@ -5,7 +5,6 @@ namespace Test\League\Tactician\Container;
 use League\Container\Container;
 use League\Tactician\Container\ContainerLocator;
 use PHPUnit_Framework_TestCase;
-use Test\League\Tactician\Container\Fixtures\Commands\DeleteTaskCommand;
 use Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand;
 use Test\League\Tactician\Container\Fixtures\Commands\UpdateProfileCommand;
 
@@ -51,13 +50,5 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
                 'Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler',
                 $this->containerLocator->getHandlerForCommand(new CompleteTaskCommand)
             );
-    }
-
-    /**
-     * @expectedException \League\Tactician\Container\Exception\MissingCommandException
-     */
-    public function testMissingCommandExceptionThrownOnInvalidMappingConfig()
-    {
-        $this->containerLocator->getHandlerForCommand(new DeleteTaskCommand());
     }
 }
