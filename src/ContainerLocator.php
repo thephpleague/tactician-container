@@ -6,7 +6,6 @@ use League\Container\Container;
 use League\Tactician\Container\Exception\MissingCommandException;
 use League\Tactician\Container\Exception\MissingContainerServiceException;
 use League\Tactician\Command;
-use League\Container\Exception\ReflectionException;
 use League\Tactician\Handler\Locator\HandlerLocator;
 
 /**
