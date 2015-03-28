@@ -6,7 +6,10 @@ use League\Container\Container;
 use League\Tactician\Container\ContainerLocator;
 use PHPUnit_Framework_TestCase;
 use Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand;
+use Test\League\Tactician\Container\Fixtures\Commands\DeleteTaskCommand;
 use Test\League\Tactician\Container\Fixtures\Commands\UpdateProfileCommand;
+use Test\League\Tactician\Container\Fixtures\Container\Mailer;
+use Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler;
 
 class ContainerLocatorTest extends PHPUnit_Framework_TestCase
 {
@@ -18,13 +21,10 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
         $dic = [
             'di' => [
                 'Mailer' => [
-                    'class' => 'Test\League\Tactician\Container\Fixtures\Container\Mailer',
-                ],
-                'NonExistentDependancy' => [
-                    'class' => 'A\Made\Up\Namespace',
+                    'class' => Mailer::class,
                 ],
                 'CompleteTaskCommandHandler' => [
-                    'class' => 'Test\League\Tactician\Container\Fixtures\Command\CompleteTaskCommand',
+                    'class' => CompleteTaskCommand::class,
                     'arguments' => [
                         'Mailer',
                     ],
@@ -33,8 +33,7 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
         ];
 
         $mapping = [
-            'Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand' =>
-                'Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler',
+            CompleteTaskCommand::class => CompleteTaskCommandHandler::class,
         ];
 
         $this->containerLocator = new ContainerLocator(
@@ -43,12 +42,26 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @codeCoverage League\Tactician\Container::getHandlerForCommand
+     */
     public function testHandlerIsReturnedForSpecificClass()
     {
         $this
             ->assertInstanceOf(
-                'Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler',
+                CompleteTaskCommandHandler::class,
                 $this->containerLocator->getHandlerForCommand(new CompleteTaskCommand)
             );
+    }
+
+    /**
+     * @codeCoverage League\Tactician\Container::getHandlerForCommand
+     * @codeCoverage League\Tactician\Container\Exception\MissingCommandException
+     *
+     * @expectedException League\Tactician\Container\Exception\MissingCommandException
+     */
+    public function testMissingCommandException()
+    {
+        $this->containerLocator->getHandlerForCommand(new DeleteTaskCommand());
     }
 }
