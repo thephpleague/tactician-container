@@ -76,7 +76,7 @@ $handlerMiddleware = new League\Tactician\Handler\CommandHandlerMiddleware(
 $commandBus = new \League\Tactician\CommandBus([$handlerMiddleware]);
 
 
-$command = new MyCommand    ('Joe Bloggs', 'j.bloggs@theinternet.com');
+$command = new MyCommand('Joe Bloggs', 'j.bloggs@theinternet.com');
 echo '<pre>';
 try {
     $commandBus->handle($command);
