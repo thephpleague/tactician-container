@@ -41,10 +41,7 @@ class ContainerLocator implements HandlerLocator
         array $commandClassToHandlerMap = []
     ) {
         $this->container = $container;
-
-        if (empty($commandClassToHandlerMap) === false) {
-            $this->addHandlers($commandClassToHandlerMap);
-        }
+        $this->addHandlers($commandClassToHandlerMap);
     }
 
     /**
