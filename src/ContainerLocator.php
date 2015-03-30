@@ -77,9 +77,7 @@ class ContainerLocator implements HandlerLocator
      * Retrieve handler for the given command
      *
      * @param Command $command The command object
-     *
      * @return Object
-     *
      * @throws MissingHandlerException
      */
     public function getHandlerForCommand(Command $command)

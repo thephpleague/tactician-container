@@ -17,7 +17,6 @@ class MissingCommandException extends \OutOfBoundsException implements Exception
 
     /**
      * @param Command $command
-     *
      * @return static
      */
     public static function forCommand(Command $command)
