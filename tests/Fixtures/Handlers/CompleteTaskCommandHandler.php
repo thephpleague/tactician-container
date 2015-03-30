@@ -2,7 +2,6 @@
 
 namespace Test\League\Tactician\Container\Fixtures\Handlers;
 
-use League\Tactician\Command;
 use Test\League\Tactician\Container\Fixtures\Container\Mailer;
 
 class CompleteTaskCommandHandler
@@ -14,7 +13,7 @@ class CompleteTaskCommandHandler
         $this->mailer = $mailer;
     }
 
-    public function handleCompleteTaskCommand(Command $command)
+    public function handleCompleteTaskCommand($command)
     {
     }
 }

@@ -13,7 +13,7 @@ use Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler
 
 class ContainerLocatorTest extends PHPUnit_Framework_TestCase
 {
-    /** @var  ContainerLocator */
+    /** @var ContainerLocator */
     private $containerLocator;
 
     protected function setUp()

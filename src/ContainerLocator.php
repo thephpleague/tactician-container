@@ -3,7 +3,6 @@
 namespace League\Tactician\Container;
 
 use League\Container\Container;
-use League\Tactician\Container\Exception\MissingContainerServiceException;
 use League\Tactician\Command;
 use League\Tactician\Exception\MissingHandlerException;
 use League\Tactician\Handler\Locator\HandlerLocator;
@@ -76,11 +75,11 @@ class ContainerLocator implements HandlerLocator
     /**
      * Retrieve handler for the given command
      *
-     * @param Command $command The command object
+     * @param object $command The command object
      * @return Object
      * @throws MissingHandlerException
      */
-    public function getHandlerForCommand(Command $command)
+    public function getHandlerForCommand($command)
     {
         $className = get_class($command);
 
