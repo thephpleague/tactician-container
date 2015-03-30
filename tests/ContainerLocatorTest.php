@@ -43,19 +43,6 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException League\Tactician\Container\Exception\MissingCommandException
-     */
-    public function testEmptyArrayPassedToConstructor()
-    {
-        $containerLocator = new ContainerLocator(
-            new Container([]),
-            []
-        );
-
-        $containerLocator->getHandlerForCommand(new CompleteTaskCommand());
-    }
-
-    /**
      * @codeCoverage League\Tactician\Container::getHandlerForCommand
      */
     public function testHandlerIsReturnedForSpecificClass()
