@@ -3,9 +3,9 @@
 namespace League\Tactician\Container;
 
 use League\Container\Container;
-use League\Tactician\Container\Exception\MissingCommandException;
 use League\Tactician\Container\Exception\MissingContainerServiceException;
 use League\Tactician\Command;
+use League\Tactician\Exception\MissingHandlerException;
 use League\Tactician\Handler\Locator\HandlerLocator;
 
 /**
@@ -85,7 +85,7 @@ class ContainerLocator implements HandlerLocator
         $className = get_class($command);
 
         if (!isset($this->commandToHandlerIdMap[$className])) {
-            throw MissingCommandException::forCommand($command);
+            throw MissingHandlerException::forCommand($command);
         }
 
         $serviceId = $this->commandToHandlerIdMap[$className];

@@ -58,7 +58,7 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
      * @codeCoverage League\Tactician\Container::getHandlerForCommand
      * @codeCoverage League\Tactician\Container\Exception\MissingCommandException
      *
-     * @expectedException League\Tactician\Container\Exception\MissingCommandException
+     * @expectedException League\Tactician\Exception\MissingHandlerException
      */
     public function testMissingCommandException()
     {
