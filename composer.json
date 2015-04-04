@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.5",
-        "league/tactician": "^0.4",
+        "league/tactician": "^0.5@dev",
         "league/container": "~1.3"
     },
     "require-dev": {
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "League\\Tactician\\Container\\": "src"
+            "League\\Tactician\\Container\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\League\\Tactician\\Container\\": "tests"
+            "League\\Tactician\\Container\\Test\\": "tests/"
         }
     },
     "extra": {

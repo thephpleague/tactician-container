@@ -1,10 +1,7 @@
 <?php
 
-namespace Test\League\Tactician\Container\Fixtures\Container;
+namespace League\Tactician\Container\Test\Fixtures\Container;
 
 class Mailer
 {
-    public function __construct()
-    {
-    }
 }
