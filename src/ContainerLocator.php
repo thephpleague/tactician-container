@@ -60,7 +60,7 @@ class ContainerLocator implements HandlerLocator
      *
      * @param array $commandNameToHandlerMap
      */
-    protected function addHandlers(array $commandNameToHandlerMap)
+    public function addHandlers(array $commandNameToHandlerMap)
     {
         foreach ($commandNameToHandlerMap as $commandName => $handler) {
             $this->addHandler($handler, $commandName);

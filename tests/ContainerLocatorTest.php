@@ -50,6 +50,24 @@ class ContainerLocatorTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testHandlerIsReturnedForAddedClass()
+    {
+        $this->containerLocator->addHandler('stdClass', CompleteTaskCommand::class);
+        $this->assertInstanceOf(
+            'stdClass',
+            $this->containerLocator->getHandlerForCommand(CompleteTaskCommand::class)
+        );
+    }
+
+    public function testHandlerIsReturnedForAddedClasses()
+    {
+        $this->containerLocator->addHandlers([CompleteTaskCommand::class => 'stdClass']);
+        $this->assertInstanceOf(
+            'stdClass',
+            $this->containerLocator->getHandlerForCommand(CompleteTaskCommand::class)
+        );
+    }
+
     /**
      * @expectedException League\Tactician\Exception\MissingHandlerException
      */
