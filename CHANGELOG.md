@@ -1,8 +1,7 @@
-# Changelog
+# Change Log
 
-All Notable changes to `league\tactician-container` will be documented in this file
 
-## x.x.x - 2015-03-25
+## Unreleased
 
 ### Added
 
@@ -17,19 +16,3 @@ All Notable changes to `league\tactician-container` will be documented in this f
     - .gitignore
     - .gitattributes
 - Add composer file with namespace
-
-### Deprecated
-
-- Nothing
-
-### Fixed
-
-- Nothing
-
-### Remove
-
-- Nothing
-
-### Security
-
-- Nothing
