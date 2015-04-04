@@ -34,7 +34,7 @@ $ phpunit
 
 - [Nigel Greenway](https://github.com/NigelGreenway)
 - [Ross Tuck](https://github.com/rosstuck)
-- [All Contributors](https://github.com/thephpleague/tactician-bernard/contributors)
+- [All Contributors](https://github.com/thephpleague/tactician-container/contributors)
 
 
 ## License
