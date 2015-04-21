@@ -1,19 +1,19 @@
 <?php
 
-namespace Test\League\Tactician\Container;
+namespace League\Tactician\Container;
 
 use League\Container\Container;
 use League\Tactician\Container\ContainerLocator;
-use PHPUnit_Framework_TestCase;
-use Test\League\Tactician\Container\Fixtures\Commands\CompleteTaskCommand;
-use Test\League\Tactician\Container\Fixtures\Commands\DeleteTaskCommand;
-use Test\League\Tactician\Container\Fixtures\Commands\UpdateProfileCommand;
-use Test\League\Tactician\Container\Fixtures\Container\Mailer;
-use Test\League\Tactician\Container\Fixtures\Handlers\CompleteTaskCommandHandler;
+use League\Tactician\Container\Test\Fixtures\Commands\CompleteTaskCommand;
+use League\Tactician\Container\Test\Fixtures\Commands\DeleteTaskCommand;
+use League\Tactician\Container\Test\Fixtures\Container\Mailer;
+use League\Tactician\Container\Test\Fixtures\Handlers\CompleteTaskCommandHandler;
 
-class ContainerLocatorTest extends PHPUnit_Framework_TestCase
+class ContainerLocatorTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var ContainerLocator */
+    /**
+     * @var ContainerLocator
+     */
     private $containerLocator;
 
     protected function setUp()
@@ -42,26 +42,37 @@ class ContainerLocatorTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @codeCoverage League\Tactician\Container::getHandlerForCommand
-     */
     public function testHandlerIsReturnedForSpecificClass()
     {
-        $this
-            ->assertInstanceOf(
-                CompleteTaskCommandHandler::class,
-                $this->containerLocator->getHandlerForCommand(new CompleteTaskCommand)
-            );
+        $this->assertInstanceOf(
+            CompleteTaskCommandHandler::class,
+            $this->containerLocator->getHandlerForCommand(CompleteTaskCommand::class)
+        );
+    }
+
+    public function testHandlerIsReturnedForAddedClass()
+    {
+        $this->containerLocator->addHandler('stdClass', CompleteTaskCommand::class);
+        $this->assertInstanceOf(
+            'stdClass',
+            $this->containerLocator->getHandlerForCommand(CompleteTaskCommand::class)
+        );
+    }
+
+    public function testHandlerIsReturnedForAddedClasses()
+    {
+        $this->containerLocator->addHandlers([CompleteTaskCommand::class => 'stdClass']);
+        $this->assertInstanceOf(
+            'stdClass',
+            $this->containerLocator->getHandlerForCommand(CompleteTaskCommand::class)
+        );
     }
 
     /**
-     * @codeCoverage League\Tactician\Container::getHandlerForCommand
-     * @codeCoverage League\Tactician\Container\Exception\MissingCommandException
-     *
      * @expectedException League\Tactician\Exception\MissingHandlerException
      */
     public function testMissingCommandException()
     {
-        $this->containerLocator->getHandlerForCommand(new DeleteTaskCommand());
+        $this->containerLocator->getHandlerForCommand(DeleteTaskCommand::class);
     }
 }

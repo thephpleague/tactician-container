@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\League\Tactician\Container\Fixtures\Handlers;
+namespace League\Tactician\Container\Test\Fixtures\Handlers;
 
-use Test\League\Tactician\Container\Fixtures\Container\Mailer;
+use League\Tactician\Container\Test\Fixtures\Container\Mailer;
 
 class CompleteTaskCommandHandler
 {

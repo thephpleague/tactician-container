@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\League\Tactician\Container\Fixtures\Commands;
+namespace League\Tactician\Container\Test\Fixtures\Commands;
 
 class DeleteTaskCommand
 {

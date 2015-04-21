@@ -3,21 +3,18 @@
 namespace League\Tactician\Container;
 
 use League\Container\Container;
-use League\Tactician\Command;
 use League\Tactician\Exception\MissingHandlerException;
 use League\Tactician\Handler\Locator\HandlerLocator;
 
 /**
  * Fetch handler instances from an in-memory collection.
  *
- * This locator allows you to bind a handler fqcn to receive commands of a
- * certain class name.
+ * This locator allows you to bind a handler FQCN to receive commands of a
+ * certain command name.
  */
 class ContainerLocator implements HandlerLocator
 {
     /**
-     * The Container object
-     *
      * @var Container
      */
     protected $container;
@@ -27,31 +24,29 @@ class ContainerLocator implements HandlerLocator
      *
      * @var array
      */
-    protected $commandToHandlerIdMap = [];
+    protected $commandNameToHandlerMap = [];
 
     /**
-     * Class constructor
-     *
-     * @param Container $container                The Container object
-     * @param array     $commandClassToHandlerMap The Command/Handler mapping
+     * @param Container $container
+     * @param array     $commandNameToHandlerMap
      */
     public function __construct(
         Container $container,
-        array $commandClassToHandlerMap = []
+        array $commandNameToHandlerMap = []
     ) {
         $this->container = $container;
-        $this->addHandlers($commandClassToHandlerMap);
+        $this->addHandlers($commandNameToHandlerMap);
     }
 
     /**
      * Bind a handler instance to receive all commands with a certain class
      *
-     * @param string $handlerId        Handler to receive class
-     * @param string $commandClassName Command class e.g. "My\TaskAddedCommand"
+     * @param string $handler   Handler to receive class
+     * @param string $commandName Can be a class name or name of a NamedCommand
      */
-    public function addHandler($handlerId, $commandClassName)
+    public function addHandler($handler, $commandName)
     {
-        $this->commandToHandlerIdMap[$commandClassName] = $handlerId;
+        $this->commandNameToHandlerMap[$commandName] = $handler;
     }
 
     /**
@@ -63,31 +58,31 @@ class ContainerLocator implements HandlerLocator
      *      'CompleteTaskCommand' => 'CompleteTaskCommandHandler',
      *  ]
      *
-     * @param array $commandClassToHandlerMap The Command/Handler mapping
+     * @param array $commandNameToHandlerMap
      */
-    protected function addHandlers(array $commandClassToHandlerMap)
+    public function addHandlers(array $commandNameToHandlerMap)
     {
-        foreach ($commandClassToHandlerMap as $commandClass => $handler) {
-            $this->addHandler($handler, $commandClass);
+        foreach ($commandNameToHandlerMap as $commandName => $handler) {
+            $this->addHandler($handler, $commandName);
         }
     }
 
     /**
-     * Retrieve handler for the given command
+     * Retrieves the handler for a specified command
      *
-     * @param object $command The command object
-     * @return Object
+     * @param string $commandName
+     *
+     * @return object
+     *
      * @throws MissingHandlerException
      */
-    public function getHandlerForCommand($command)
+    public function getHandlerForCommand($commandName)
     {
-        $className = get_class($command);
-
-        if (!isset($this->commandToHandlerIdMap[$className])) {
-            throw MissingHandlerException::forCommand($command);
+        if (!isset($this->commandNameToHandlerMap[$commandName])) {
+            throw MissingHandlerException::forCommand($commandName);
         }
 
-        $serviceId = $this->commandToHandlerIdMap[$className];
+        $serviceId = $this->commandNameToHandlerMap[$commandName];
 
         return $this->container->get($serviceId);
     }

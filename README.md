@@ -1,16 +1,42 @@
-## Tactician League Container plugin
+## Tactician Container plugin
 
-This plugin allows lazy loading CommandHandlers from League\Container.
+[![Author](http://img.shields.io/badge/author-@nigelgreenway-blue.svg?style=flat-square)](https://twitter.com/NigelGreenway)
+[![Latest Version](https://img.shields.io/github/release/thephpleague/tactician-container.svg?style=flat-square)](https://github.com/thephpleague/tactician-container/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/travis/thephpleague/tactician-container.svg?style=flat-square)](https://travis-ci.org/thephpleague/tactician-container)
+[![HHVM Status](https://img.shields.io/hhvm/league/tactician-container.svg?style=flat-square)](http://hhvm.h4cc.de/package/league/tactician-container)
+[![Total Downloads](https://img.shields.io/packagist/dt/league/tactician-container.svg?style=flat-square)](https://packagist.org/packages/league/tactician-container)
 
-For more information, see the [documentation on the Tactician website](http://tactician.thephpleague.com/plugins/league-container/).
+**This plugin allows lazy loading CommandHandlers from League\Container.**
 
-## Installation
-`composer require league/tactician-container`
+
+## Install
+
+Via Composer
+
+``` bash
+$ composer require league/tactician-container
+```
+
+
+## Usage
+
+Documentation is available on the [official website](http://tactician.thephpleague.com/plugins/league-container/).
+
 
 ## Testing
-`./vendor/bin/phpunit`
 
-## Authors
+``` bash
+$ phpunit
+```
 
-- Nigel Greenway
-- Ross Tuck
+## Credits
+
+- [Nigel Greenway](https://github.com/NigelGreenway)
+- [Ross Tuck](https://github.com/rosstuck)
+- [All Contributors](https://github.com/thephpleague/tactician-container/contributors)
+
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.

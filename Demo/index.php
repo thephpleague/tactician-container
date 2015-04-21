@@ -2,6 +2,13 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use League\Tactician\Container\ContainerLocator;
+use League\Container\Container;
+use League\Tactician\Handler\CommandHandlerMiddleware;
+use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
+use League\Tactician\Handler\MethodNameInflector\HandleClassNameInflector;
+use League\Tactician\CommandBus;
+
 $dic = [
     'di' => [
         'Mailer' => [
@@ -22,19 +29,15 @@ $mapping = [
 
 final class Mailer
 {
-    public function __construct()
-    {}
 }
 
-final class MyCommand implements \League\Tactician\Command
+final class MyCommand
 {
-    public $name,
-           $emailAddress;
+    public $name
+    public $emailAddress;
 
-    public function __construct(
-        $name,
-        $emailAddress
-    ) {
+    public function __construct($name, $emailAddress)
+    {
         $this->name         = $name;
         $this->emailAddress = $emailAddress;
     }
@@ -63,17 +66,18 @@ MSG;
     }
 }
 
-$containerLocator = new League\Tactician\Container\ContainerLocator(
-    new League\Container\Container($dic),
+$containerLocator = new ContainerLocator(
+    new Container($dic),
     $mapping
 );
 
-$handlerMiddleware = new League\Tactician\Handler\CommandHandlerMiddleware(
+$handlerMiddleware = new CommandHandlerMiddleware(
+    new ClassNameExtractor()
     $containerLocator,
-    new \League\Tactician\Handler\MethodNameInflector\HandleClassNameInflector()
+    new HandleClassNameInflector()
 );
 
-$commandBus = new \League\Tactician\CommandBus([$handlerMiddleware]);
+$commandBus = new CommandBus([$handlerMiddleware]);
 
 
 $command = new MyCommand('Joe Bloggs', 'j.bloggs@theinternet.com');
