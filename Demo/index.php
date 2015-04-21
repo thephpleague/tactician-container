@@ -33,7 +33,7 @@ final class Mailer
 
 final class MyCommand
 {
-    public $name
+    public $name;
     public $emailAddress;
 
     public function __construct($name, $emailAddress)
@@ -72,7 +72,7 @@ $containerLocator = new ContainerLocator(
 );
 
 $handlerMiddleware = new CommandHandlerMiddleware(
-    new ClassNameExtractor()
+    new ClassNameExtractor(),
     $containerLocator,
     new HandleClassNameInflector()
 );
