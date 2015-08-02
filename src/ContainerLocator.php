@@ -2,7 +2,7 @@
 
 namespace League\Tactician\Container;
 
-use League\Container\Container;
+use League\Container\ContainerInterface;
 use League\Tactician\Exception\MissingHandlerException;
 use League\Tactician\Handler\Locator\HandlerLocator;
 
@@ -15,7 +15,7 @@ use League\Tactician\Handler\Locator\HandlerLocator;
 class ContainerLocator implements HandlerLocator
 {
     /**
-     * @var Container
+     * @var ContainerInterface
      */
     protected $container;
 
@@ -27,11 +27,11 @@ class ContainerLocator implements HandlerLocator
     protected $commandNameToHandlerMap = [];
 
     /**
-     * @param Container $container
-     * @param array     $commandNameToHandlerMap
+     * @param ContainerInterface $container
+     * @param array              $commandNameToHandlerMap
      */
     public function __construct(
-        Container $container,
+        ContainerInterface $container,
         array $commandNameToHandlerMap = []
     ) {
         $this->container = $container;
@@ -41,7 +41,7 @@ class ContainerLocator implements HandlerLocator
     /**
      * Bind a handler instance to receive all commands with a certain class
      *
-     * @param string $handler   Handler to receive class
+     * @param string $handler     Handler to receive class
      * @param string $commandName Can be a class name or name of a NamedCommand
      */
     public function addHandler($handler, $commandName)
