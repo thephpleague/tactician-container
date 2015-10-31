@@ -3,6 +3,7 @@
 namespace League\Tactician\Container;
 
 use League\Container\Container;
+use League\Container\ReflectionContainer;
 use League\Tactician\Container\ContainerLocator;
 use League\Tactician\Container\Test\Fixtures\Commands\CompleteTaskCommand;
 use League\Tactician\Container\Test\Fixtures\Commands\DeleteTaskCommand;
@@ -18,26 +19,21 @@ class ContainerLocatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $dic = [
-            'di' => [
-                'Mailer' => [
-                    'class' => Mailer::class,
-                ],
-                'CompleteTaskCommandHandler' => [
-                    'class' => CompleteTaskCommand::class,
-                    'arguments' => [
-                        'Mailer',
-                    ],
-                ],
-            ],
-        ];
+
+        $container = new Container;
+        $container->delegate(
+            new ReflectionContainer
+        );
+        $container->add('Mailer', Mailer::class);
+        $container->add('CompleteTaskCommandHandler', CompleteTaskCommand::class)
+                  ->withArgument('Mailer');
 
         $mapping = [
             CompleteTaskCommand::class => CompleteTaskCommandHandler::class,
         ];
 
         $this->containerLocator = new ContainerLocator(
-            new Container($dic),
+            $container,
             $mapping
         );
     }

@@ -2,7 +2,7 @@
 
 namespace League\Tactician\Container;
 
-use League\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 use League\Tactician\Exception\MissingHandlerException;
 use League\Tactician\Handler\Locator\HandlerLocator;
 
