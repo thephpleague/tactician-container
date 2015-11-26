@@ -1,7 +1,7 @@
 {
     "name":        "league/tactician-container",
-    "description": "Tactician integration with the PHP League DI container",
-    "keywords":    ["tactician", "di", "container", "league"],
+    "description": "Tactician integration with container implementing the container-interop interface",
+    "keywords":    ["tactician", "di", "container", "league", "container-interop", "interoperable"],
     "license":     "MIT",
     "authors": [
         {
