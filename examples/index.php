@@ -2,26 +2,13 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use League\Container\ReflectionContainer;
 use League\Tactician\Container\ContainerLocator;
 use League\Container\Container;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
 use League\Tactician\Handler\MethodNameInflector\HandleClassNameInflector;
 use League\Tactician\CommandBus;
-
-$dic = [
-    'di' => [
-        'Mailer' => [
-            'class' => 'Mailer',
-        ],
-        'MyCommandHandler' => [
-            'class' => 'MyCommandHandler',
-            'arguments' => [
-                'Mailer',
-            ],
-        ],
-    ],
-];
 
 $mapping = [
     'MyCommand' => 'MyCommandHandler',
@@ -67,7 +54,7 @@ MSG;
 }
 
 $containerLocator = new ContainerLocator(
-    new Container($dic),
+    (new Container())->delegate(new ReflectionContainer()),
     $mapping
 );
 
