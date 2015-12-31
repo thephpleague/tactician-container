@@ -26,15 +26,19 @@ Documentation is available on the [official website](http://tactician.thephpleag
 ## Testing
 
 ``` bash
-$ phpunit
+$ ./vendor/bin/phpunit
 ```
 
 ## Credits
 
 - [Nigel Greenway](https://github.com/NigelGreenway)
+- [Jonathan Bernardi](https://github.com/spekkionu)
+- [Hannes Van De Vreken](https://github.com/hannesvdvreken)
 - [Ross Tuck](https://github.com/rosstuck)
 - [All Contributors](https://github.com/thephpleague/tactician-container/contributors)
 
+## Security
+Disclosure information can be found on [the main Tactician repo](https://github.com/thephpleague/tactician#security).
 
 ## License
 

@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.5",
-        "league/tactician": "^0.6",
+        "league/tactician": "^1.0",
         "container-interop/container-interop": "^1.1"
     },
     "require-dev": {
@@ -27,11 +27,6 @@
     "autoload-dev": {
         "psr-4": {
             "League\\Tactician\\Container\\Test\\": "tests/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1-dev"
         }
     }
 }
