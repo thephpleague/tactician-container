@@ -7,7 +7,7 @@
 [![HHVM Status](https://img.shields.io/hhvm/league/tactician-container.svg?style=flat-square)](http://hhvm.h4cc.de/package/league/tactician-container)
 [![Total Downloads](https://img.shields.io/packagist/dt/league/tactician-container.svg?style=flat-square)](https://packagist.org/packages/league/tactician-container)
 
-**This plugin allows lazy loading CommandHandlers from a [`container-interop`](https://github.com/container-interop/container-interop) container.**
+**This plugin allows lazy loading CommandHandlers from a [`PSR11`](https://github.com/php-fig/container) container.**
 
 ## Install
 

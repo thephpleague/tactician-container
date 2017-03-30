@@ -1,6 +1,6 @@
 {
     "name":        "league/tactician-container",
-    "description": "Tactician integration for any container implementing the container-interop interface",
+    "description": "Tactician integration for any container implementing PSR11",
     "keywords":    ["tactician", "di", "container", "league", "container-interop", "interoperable"],
     "license":     "MIT",
     "authors": [
@@ -12,12 +12,12 @@
     "require": {
         "php": ">=5.5",
         "league/tactician": "^1.0",
-        "container-interop/container-interop": "^1.1"
+        "psr/container": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",
         "squizlabs/php_codesniffer": "~2.0",
-        "league/container": "~2.0"
+        "league/container": "~2.3"
     },
     "autoload": {
         "psr-4": {
