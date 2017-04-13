@@ -1,6 +1,6 @@
 <?php
 
-namespace League\Tactician\Container;
+namespace League\Tactician\Container\Test;
 
 use League\Container\Container;
 use League\Container\ReflectionContainer;
