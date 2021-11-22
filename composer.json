@@ -15,7 +15,7 @@
         "psr/container": "~2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.3",
+        "phpunit/phpunit": "~6.0",
         "squizlabs/php_codesniffer": "~2.0",
         "league/container": "~4.0"
     },
