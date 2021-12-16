@@ -9,8 +9,9 @@ use League\Tactician\Container\Test\Fixtures\Commands\CompleteTaskCommand;
 use League\Tactician\Container\Test\Fixtures\Commands\DeleteTaskCommand;
 use League\Tactician\Container\Test\Fixtures\Container\Mailer;
 use League\Tactician\Container\Test\Fixtures\Handlers\CompleteTaskCommandHandler;
+use PHPUnit\Framework\TestCase;
 
-class ContainerLocatorTest extends \PHPUnit_Framework_TestCase
+class ContainerLocatorTest extends TestCase
 {
     /**
      * @var ContainerLocator
@@ -25,8 +26,7 @@ class ContainerLocatorTest extends \PHPUnit_Framework_TestCase
             new ReflectionContainer
         );
         $container->add('Mailer', Mailer::class);
-        $container->add('CompleteTaskCommandHandler', CompleteTaskCommand::class)
-                  ->withArgument('Mailer');
+        $container->add('CompleteTaskCommandHandler', CompleteTaskCommand::class);
 
         $mapping = [
             CompleteTaskCommand::class => CompleteTaskCommandHandler::class,
